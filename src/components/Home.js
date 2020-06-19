@@ -1,5 +1,5 @@
 import React from "react";
-
+// Rendering the home component
 const Home = () => {
   return (
     <div className="photo-container">

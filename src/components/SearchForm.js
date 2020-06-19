@@ -2,28 +2,32 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class SearchForm extends Component {
+  // Store the target value
   state = {
     text: "",
   };
-
+  // If browser refresh, call axios with the current pathname
   componentDidMount() {
     this.props.performSearch(this.props.location.pathname.slice(8));
   }
-
+  // Set state with the current value
   onChange = (e) => {
     this.setState({ text: e.target.value });
   };
-
+  // Submit the form
   handleSubmit = (e) => {
+    // Prevent browser refreshing
     e.preventDefault();
-
+    // Handling the loading indicator
     this.props.handleLoading();
+    // Call axios with current value
     this.props.performSearch(this.query.value);
-
+    // Create variables to store the current value and the path to push to the history
     let query = this.query.value;
     let path = `/search/${query}`;
-
+    // Push to history the current path
     this.props.history.push(path);
+    // Reset the input
     e.currentTarget.reset();
   };
 

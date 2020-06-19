@@ -1,5 +1,5 @@
 import React from "react";
-
+// Rendering the images
 const Photo = (props) => {
   return (
     <li>

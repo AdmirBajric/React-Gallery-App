@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./index.css";
+// API Key for Flickr.com
 import apiKey from "./config";
+// Promise based HTTP client
 import axios from "axios";
+// Components
 import Home from "./components/Home";
 import SearchForm from "./components/SearchForm";
 import Nav from "./components/Nav";
@@ -19,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     this.defaultTopicsSearch();
   }
-
+  // Default fetching data for the three default topics
   defaultTopicsSearch = (topic) => {
     this.state.defaultTopics.forEach((topic) => {
       axios
@@ -36,7 +39,7 @@ class App extends Component {
         });
     });
   };
-
+  // Perform search for the SearchForm
   performSearch = (topic) => {
     axios
       .get(
@@ -52,7 +55,7 @@ class App extends Component {
         console.log("Error fetching and parsing data", error);
       });
   };
-
+  // Handling the loading indicator
   handleLoading = () => {
     this.setState({
       loading: true,

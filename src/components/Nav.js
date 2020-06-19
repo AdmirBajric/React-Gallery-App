@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+// Rendering the Nav three default topics links
 function Nav() {
   return (
     <nav className="main-nav">

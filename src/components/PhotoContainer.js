@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+// Components
 import Photo from "./Photo";
 import NotFoundSearch from "./NotFoundSearch";
 
 class PhotoContainer extends Component {
+  // Handling the loading indicator
   componentDidUpdate() {
     if (this.props.loading) {
       this.props.handleLoading();
@@ -10,6 +12,7 @@ class PhotoContainer extends Component {
   }
 
   render() {
+    // Creating variables to store title, jsx-component
     let jsx = "";
     let title;
     let url = this.props.props.match.url;
@@ -21,10 +24,11 @@ class PhotoContainer extends Component {
       const element = data[key];
       newData.push(element);
     }
-
+    // If no data then render notfound search component
     if (newData.length === 0) {
       jsx = <NotFoundSearch />;
     } else {
+      // If data render component to show images
       jsx = newData.map((item) => <Photo data={item} key={item.id} />);
       if (url.startsWith("/search")) {
         title = `${url.slice(8)} Images`;

@@ -1,5 +1,5 @@
 import React from "react";
-
+// Rendering not found page
 const NotFoundPage = () => {
   return (
     <li className="not-found">

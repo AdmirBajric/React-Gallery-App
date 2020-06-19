@@ -1,5 +1,5 @@
 import React from "react";
-
+// Rendering when no searches are found
 const NotFoundSearch = () => {
   return (
     <li className="not-found">
