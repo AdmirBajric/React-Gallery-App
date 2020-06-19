@@ -27,7 +27,7 @@ class PhotoContainer extends Component {
     // If no data then render notfound search component
     if (newData.length === 0) {
       jsx = <NotFoundSearch />;
-    } else {
+    } else if (newData.length > 0) {
       // If data render component to show images
       jsx = newData.map((item) => <Photo data={item} key={item.id} />);
       if (url.startsWith("/search")) {
@@ -39,7 +39,7 @@ class PhotoContainer extends Component {
 
     return (
       <div className="photo-container">
-        <h2>{title}</h2>
+        {newData.length === 0 ? null : <h2>{title}</h2>}
         <ul>{jsx}</ul>
       </div>
     );

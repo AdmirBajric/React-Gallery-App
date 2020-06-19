@@ -8,12 +8,10 @@ body {
 }
 
 h2 {
-  display: inline-block;
   font-size: 2em;
   margin: 52px 0 40px;
   text-transform: capitalize;
   padding-bottom: 12px;
-  border-bottom: 3px dotted #7fcdcd;
   text-shadow: 1px 1px #7fcdcd;
 }
 
