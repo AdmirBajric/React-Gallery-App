@@ -18,7 +18,7 @@ class App extends Component {
     defaultTopics: ["summer", "sun", "sea"],
     loading: true,
   };
-
+  // Fetch default topics in first run
   componentDidMount() {
     this.defaultTopicsSearch();
   }
@@ -66,9 +66,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="container">
-          <SearchForm
-            performSearch={this.performSearch}
-            handleLoading={this.handleLoading}
+          <Route
+            render={() => (
+              <SearchForm
+                performSearch={this.performSearch}
+                handleLoading={this.handleLoading}
+              />
+            )}
           />
           <Nav />
           <Switch>

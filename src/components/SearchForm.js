@@ -10,14 +10,21 @@ class SearchForm extends Component {
   componentDidMount() {
     this.props.performSearch(this.props.location.pathname.slice(8));
   }
-  // Set state with the current value
-  onChange = (e) => {
-    this.setState({ text: e.target.value });
-  };
+  // Update when path is changed
+  componentDidUpdate() {
+    const currPath = this.props.location.pathname.slice(8);
+    if (this.state.text !== currPath) {
+      this.props.performSearch(currPath);
+      this.setState({ text: currPath });
+    }
+  }
+
   // Submit the form
   handleSubmit = (e) => {
     // Prevent browser refreshing
     e.preventDefault();
+    // Set state with current value
+    this.setState({ text: this.query.value });
     // Handling the loading indicator
     this.props.handleLoading();
     // Call axios with current value
@@ -38,7 +45,6 @@ class SearchForm extends Component {
           type="search"
           name="search"
           placeholder="Search"
-          onChange={this.onChange}
           ref={(input) => (this.query = input)}
           required
         />
