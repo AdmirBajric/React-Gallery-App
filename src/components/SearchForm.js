@@ -6,14 +6,13 @@ class SearchForm extends Component {
   state = {
     text: "",
   };
-  // If browser refresh, call axios with the current pathname
-  componentDidMount() {
-    this.props.performSearch(this.props.location.pathname.slice(8));
-  }
   // Update when path is changed
   componentDidUpdate() {
     const currPath = this.props.location.pathname.slice(8);
-    if (this.state.text !== currPath) {
+    if (
+      this.state.text !== currPath &&
+      this.props.location.pathname.startsWith("/search")
+    ) {
       this.props.performSearch(currPath);
       this.setState({ text: currPath });
     }
